@@ -84,26 +84,28 @@ CPU_DISASSEMBLE( asap )
 		case 0x06:  sprintf(buffer, "xor%s  %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x07:  sprintf(buffer, "xorn%s %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x08:  if (!rsrc1 && !rdst && rsrc2_iszero)
-					sprintf(buffer, "nop");
+					    sprintf(buffer, "nop");
 					else if (!rsrc1)
-					sprintf(buffer, "mov%s  %s,%s", setcond[cond], src2(op,0), reg[rdst]);
+					    sprintf(buffer, "mov%s  %s,%s", setcond[cond], src2(op,0), reg[rdst]);
 					else if (rsrc2_iszero)
-					sprintf(buffer, "mov%s  %s,%s", setcond[cond], reg[rsrc1], reg[rdst]);
+					    sprintf(buffer, "mov%s  %s,%s", setcond[cond], reg[rsrc1], reg[rdst]);
 					else
-					sprintf(buffer, "add%s  %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
+					    sprintf(buffer, "add%s  %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   
+                    break;
 		case 0x09:  sprintf(buffer, "sub%s  %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x0a:  sprintf(buffer, "addc%s %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x0b:  sprintf(buffer, "subc%s %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x0c:  sprintf(buffer, "and%s  %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x0d:  sprintf(buffer, "andn%s %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x0e:  if (!rsrc1 && !rdst && rsrc2_iszero)
-					sprintf(buffer, "nop");
+					    sprintf(buffer, "nop");
 					else if (!rsrc1)
-					sprintf(buffer, "mov%s  %s,%s", setcond[cond], src2(op,0), reg[rdst]);
+					    sprintf(buffer, "mov%s  %s,%s", setcond[cond], src2(op,0), reg[rdst]);
 					else if (rsrc2_iszero)
-					sprintf(buffer, "mov%s  %s,%s", setcond[cond], reg[rsrc1], reg[rdst]);
+					    sprintf(buffer, "mov%s  %s,%s", setcond[cond], reg[rsrc1], reg[rdst]);
 					else
-					sprintf(buffer, "or%s   %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
+					    sprintf(buffer, "or%s   %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   
+                    break;
 		case 0x0f:  sprintf(buffer, "orn%s  %s,%s,%s", setcond[cond], reg[rsrc1], src2(op,0), reg[rdst]);   break;
 		case 0x10:  sprintf(buffer, "ld%s   %s[%s],%s", setcond[cond], reg[rsrc1], src2(op,2), reg[rdst]);  break;
 		case 0x11:  sprintf(buffer, "ldh%s  %s[%s],%s", setcond[cond], reg[rsrc1], src2(op,1), reg[rdst]);  break;

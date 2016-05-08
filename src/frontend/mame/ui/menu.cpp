@@ -213,7 +213,7 @@ ui_menu::ui_menu(mame_ui_manager &mui, render_container *_container) : m_ui(mui)
 //  ~ui_menu - menu destructor
 //-------------------------------------------------
 
-ui_menu::~ui_menu()
+ui_menu::~ui_menu() noexcept(false)
 {
 	// free the pools
 	while (pool)

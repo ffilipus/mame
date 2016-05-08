@@ -145,7 +145,7 @@ class ui_menu_plugins_configure : public ui_menu
 {
 public:
 	ui_menu_plugins_configure(mame_ui_manager &mui, render_container *container);
-	virtual ~ui_menu_plugins_configure();
+	virtual ~ui_menu_plugins_configure() noexcept(false);
 	virtual void populate() override;
 	virtual void handle() override;
 	virtual void custom_render(void *selectedref, float top, float bottom, float x, float y, float x2, float y2) override;

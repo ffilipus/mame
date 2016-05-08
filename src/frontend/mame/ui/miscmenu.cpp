@@ -894,7 +894,7 @@ ui_menu_plugins_configure::ui_menu_plugins_configure(mame_ui_manager &mui, rende
 {
 }
 
-ui_menu_plugins_configure::~ui_menu_plugins_configure()
+ui_menu_plugins_configure::~ui_menu_plugins_configure() noexcept(false)
 {
 	emu_file file_plugin(OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
 	if (file_plugin.open("plugin.ini") != osd_file::error::NONE)

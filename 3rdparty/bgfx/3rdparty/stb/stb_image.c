@@ -1,6 +1,7 @@
 #ifdef __GNUC__
 #	pragma GCC diagnostic ignored "-Wshadow"
 #	pragma GCC diagnostic ignored "-Warray-bounds"
+#   pragma GCC diagnostic ignored "-Wmisleading-indentation"
 #	ifndef __clang__
 #		pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #	endif // __clang__

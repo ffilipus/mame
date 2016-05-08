@@ -78,7 +78,7 @@ class ui_menu
 {
 public:
 	ui_menu(mame_ui_manager &mui, render_container *container);
-	virtual ~ui_menu();
+	virtual ~ui_menu() noexcept(false);
 
 	mame_ui_manager &ui() const { return m_ui; }
 	running_machine &machine() const { return m_ui.machine(); }

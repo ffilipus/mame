@@ -144,7 +144,8 @@ static UINT32 dasm_cop(UINT32 pc, int cop, UINT32 op, char *buffer)
 				}
 			}
 			else
-				sprintf(buffer, "cop%d  $%07x", cop, op & 0x01ffffff);                              break;
+				sprintf(buffer, "cop%d  $%07x", cop, op & 0x01ffffff);                              
+            break;
 		default:    sprintf(buffer, "dc.l  $%08x [invalid]", op);                                   break;
 	}
 
@@ -248,9 +249,10 @@ static unsigned dasmr3k(char *buffer, unsigned pc, UINT32 op)
 			switch (op & 63)
 			{
 				case 0x00:  if (op == 0)
-							sprintf(buffer, "nop");
+							    sprintf(buffer, "nop");
 							else
-							sprintf(buffer, "sll    %s,%s,%d", reg[rd], reg[rt], shift);            break;
+							    sprintf(buffer, "sll    %s,%s,%d", reg[rd], reg[rt], shift);            
+                            break;
 				case 0x02:  sprintf(buffer, "srl    %s,%s,%d", reg[rd], reg[rt], shift);            break;
 				case 0x03:  sprintf(buffer, "sra    %s,%s,%d", reg[rd], reg[rt], shift);            break;
 				case 0x04:  sprintf(buffer, "sllv   %s,%s,%s", reg[rd], reg[rt], reg[rs]);          break;
@@ -258,9 +260,11 @@ static unsigned dasmr3k(char *buffer, unsigned pc, UINT32 op)
 				case 0x07:  sprintf(buffer, "srav   %s,%s,%s", reg[rd], reg[rt], reg[rs]);          break;
 				case 0x08:  sprintf(buffer, "jr     %s", reg[rs]); if (rs == 31) flags = DASMFLAG_STEP_OUT; break;
 				case 0x09:  if (rd == 31)
-							sprintf(buffer, "jalr   %s", reg[rs]);
+							    sprintf(buffer, "jalr   %s", reg[rs]);
 							else
-							sprintf(buffer, "jalr   %s,%s", reg[rs], reg[rd]); flags = DASMFLAG_STEP_OVER | DASMFLAG_STEP_OVER_EXTRA(1); break;
+							    sprintf(buffer, "jalr   %s,%s", reg[rs], reg[rd]); 
+                            flags = DASMFLAG_STEP_OVER | DASMFLAG_STEP_OVER_EXTRA(1); 
+                            break;
 				case 0x0c:  sprintf(buffer, "syscall"); flags = DASMFLAG_STEP_OVER;                 break;
 				case 0x0d:  sprintf(buffer, "break"); flags = DASMFLAG_STEP_OVER;                   break;
 				case 0x0f:  sprintf(buffer, "sync [invalid]");                                      break;
@@ -316,9 +320,10 @@ static unsigned dasmr3k(char *buffer, unsigned pc, UINT32 op)
 		case 0x02:  sprintf(buffer, "j      $%08x", (pc & 0xf0000000) | ((op & 0x0fffffff) << 2));  break;
 		case 0x03:  sprintf(buffer, "jal    $%08x", (pc & 0xf0000000) | ((op & 0x0fffffff) << 2)); flags = DASMFLAG_STEP_OVER | DASMFLAG_STEP_OVER_EXTRA(1); break;
 		case 0x04:  if (rs == 0 && rt == 0)
-					sprintf(buffer, "b      $%08x", pc + 4 + ((INT16)op << 2));
+					    sprintf(buffer, "b      $%08x", pc + 4 + ((INT16)op << 2));
 					else
-					sprintf(buffer, "beq    %s,%s,$%08x", reg[rs], reg[rt], pc + 4 + ((INT16)op << 2));break;
+					    sprintf(buffer, "beq    %s,%s,$%08x", reg[rs], reg[rt], pc + 4 + ((INT16)op << 2));
+                    break;
 		case 0x05:  sprintf(buffer, "bne    %s,%s,$%08x", reg[rs], reg[rt], pc + 4 + ((INT16)op << 2));break;
 		case 0x06:  sprintf(buffer, "blez   %s,$%08x", reg[rs], pc + 4 + ((INT16)op << 2));         break;
 		case 0x07:  sprintf(buffer, "bgtz   %s,$%08x", reg[rs], pc + 4 + ((INT16)op << 2));         break;
